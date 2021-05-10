@@ -5,8 +5,8 @@ if (isset($_GET['edt']))
     $cd= new dbhl;
     $ef=$cd->connect();
     $edit=$_GET['edt'];
-   $query= "SELECT * FROM students WHERE SN = $edit";
-   $sd= mysqli_query ($ef,$query);
+    $query= "SELECT * FROM students WHERE SN = $edit";
+    $sd= mysqli_query ($ef,$query);
     while( $res=mysqli_fetch_assoc($sd))
     { 
         ?> 
