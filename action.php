@@ -11,7 +11,7 @@ include 'data.php';
         $obj= new data();
         $ab=$obj->insertrecord($name,$roll,$address,$faculty,$status);
         if($ab)
-            {echo 'added';}
+            {header('location: display.php');}
     }
 
     if (isset($_GET['del']))
@@ -36,6 +36,29 @@ include 'data.php';
         $ab=$gh->edit( $sn, $name,$roll,$address,$faculty,$status);
        
     }
+    if(isset($_POST['add_fac']))
+    { 
+        $name=$_POST['name'];
+        $obj= new data();
+        $ab=$obj->insert_fac($name);
+        if($ab)
+            {echo 'added'.'<br>';
+    }}
+
+    if (isset($_POST['update']))
+    {
+        $fid=$_POST['id'];
+        $faculty=$_POST['faculty'];
+        $gh=new data();
+        $ab=$gh->edit_fac( $faculty, $fid); 
+    }
+
+    if (isset($_GET['delt']))
+    {
+        $fid =$_GET['delt'];
+        $bc= new data();
+        $ab=$bc->dlt_fac($fid);
+         }
 
 
 

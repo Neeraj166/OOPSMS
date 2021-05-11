@@ -45,6 +45,50 @@ class data  extends dbhl
         }
         return $result;
     }
+    public function insert_fac($name)
+        {
+            $conn=$this->connect();
+            $query="INSERT INTO faculty (faculty) values('$name')"; 
+            $ab= mysqli_query($conn,$query);
+            if ($ab){
+                (header('location:display_fac.php'));
+            }
+            return($ab);
+        }
+
+        public function get_fac()
+        {
+            $conn=$this->connect();
+            $sql="SELECT * from faculty";
+            $ab= mysqli_query($conn,$sql);
+                
+                
+                return $ab;
+
+        }
+
+        public function edit_fac($faculty,$fid)
+        {
+            $conn=$this->connect();
+            $query = "UPDATE faculty SET faculty = '$faculty' WHERE fid = $fid";  
+            $result = mysqli_query($conn, $query);
+            if ($result){
+                (header('location:display_fac.php'));
+            }
+            return $result;
+        }
+
+        public function dlt_fac($fid)
+        {
+            $conn=$this->connect();
+            $query= "DELETE FROM faculty WHERE fid = $fid";
+            $ab=mysqli_query ($conn,$query);
+            if($ab)
+            {
+                header('location: display_fac.php');
+            }
+            return $ab; 
+        }
 }
 
 ?>

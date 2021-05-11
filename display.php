@@ -1,5 +1,5 @@
 
-
+<a href="index.php">Home</a><br>
 <h1>List of students</h1>
             <table align= "left" border="1px">
             <thead> 
