@@ -32,7 +32,8 @@
                         {
                             while($row=mysqli_fetch_assoc($r))
                             {
-                                echo '<option>'.$row['faculty'].'</option>';
+                                echo '<option value="'.$row['fid'].'">'.$row['faculty'].'</option>';
+
                             }
                         }
                    

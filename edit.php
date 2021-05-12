@@ -33,9 +33,25 @@ if (isset($_GET['edt']))
             </td>
         </tr><tr>
             <td>Faculty:</td>
-            <td>
-               <input type="text" name="faculty" value="<?php echo $res['faculty']; ?>">
-            </td>
+            <td><select name="faculty" required >
+           <option><?php echo $res['fid'];?></option>
+                   <?php
+                        $a=new dbhl;
+                        $b=$a->connect();
+
+                        $q="SELECT * from faculty";
+                        $r=mysqli_query($b,$q);
+                        if($r)
+                        {
+                            while($row=mysqli_fetch_assoc($r))
+                            {
+                                echo '<option value="'.$row['fid'].'">'.$row['faculty'].'</option>';
+
+                            }
+                        }
+                   
+                   ?>
+                   </select> </td>
         </tr><tr>
             <td>Status:</td>
             <td>

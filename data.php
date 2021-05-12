@@ -5,7 +5,7 @@ class data  extends dbhl
     public function insertrecord($name,$roll,$address,$faculty,$status)
     {
         $conn=$this->connect();
-        $query="INSERT INTO students (name,roll_no,address,faculty,status) values('$name','$roll','$address','$faculty','$status')"; 
+        $query="INSERT INTO students (name,roll_no,address,fid,status) values('$name','$roll','$address','$faculty','$status')"; 
         $ab= mysqli_query($conn,$query);
         return($ab);
         
@@ -15,7 +15,7 @@ class data  extends dbhl
     public function getallusers()
         {
             $conn=$this->connect();
-            $sql="SELECT * from students";
+            $sql="SELECT * from students ,faculty where students.fid=faculty.fid";
             $ab= mysqli_query($conn,$sql);
                 
                 
@@ -38,7 +38,7 @@ class data  extends dbhl
     public function edit ($sn,$name,$roll,$address,$faculty,$status)
     {
         $conn=$this->connect();
-        $query = "UPDATE students SET name = '$name',roll_no = '$roll', faculty='$faculty',address= '$address',status = '$status' WHERE `SN` = $sn";  
+        $query = "UPDATE students SET name = '$name',roll_no = '$roll', fid='$faculty',address= '$address',status = '$status' WHERE `SN` = $sn";  
         $result = mysqli_query($conn, $query);
         if($result){
             header('location: display.php');

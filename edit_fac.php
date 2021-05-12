@@ -22,7 +22,7 @@ if (isset($_GET['edtt']))
             </td>
         </tr>
         <tr>  <td>
-            <input type ="submit" value="Update" name ="update">
+            <input type ="submit" value="Update" name ="updated">
             </td>
         </tr>
         </table>

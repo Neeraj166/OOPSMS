@@ -16,6 +16,7 @@
                 include 'data.php';
                 $datas= new data;
                 $data=$datas->getallusers();
+                $data2=$datas->get_fac();
             
                 while( $result=mysqli_fetch_assoc($data))
                     {
