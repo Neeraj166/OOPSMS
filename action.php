@@ -8,10 +8,19 @@ include 'data.php';
         $address = $_POST['address'];
         $faculty = $_POST['faculty'];
         $status = $_POST['status'];
+
+ 
+        $filename=$_FILES['uploadfile']['name'];
+        $filetmp=$_FILES['uploadfile']['tmp_name'];
+        $image='upload/'.$filename;
+        move_uploaded_file($filetmp,$image);
+
         $obj= new data();
-        $ab=$obj->insertrecord($name,$roll,$address,$faculty,$status);
+        $ab=$obj->insertrecord($name,$roll,$address,$faculty,$status,$image);
         if($ab)
             {header('location: display.php');}
+            else
+            {echo 'couldnot';}
     }
 
     if (isset($_GET['del']))
@@ -32,8 +41,9 @@ include 'data.php';
         $address = $_POST['address'];
         $faculty = $_POST['faculty'];
         $status = $_POST['status'];
+        
         $gh=new data();
-        $ab=$gh->edit( $sn, $name,$roll,$address,$faculty,$status);
+        $ab=$gh->edit( $sn, $name,$roll,$address,$faculty,$status,$image);
        
     }
     if(isset($_POST['add_fac']))

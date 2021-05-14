@@ -2,10 +2,10 @@
 include 'db.php';
 class data  extends dbhl
 {
-    public function insertrecord($name,$roll,$address,$faculty,$status)
+    public function insertrecord($name,$roll,$address,$faculty,$status,$image)
     {
         $conn=$this->connect();
-        $query="INSERT INTO students (name,roll_no,address,fid,status) values('$name','$roll','$address','$faculty','$status')"; 
+        $query="INSERT INTO students (name,roll_no,address,fid,status,image) values('$name','$roll','$address','$faculty','$status','$image')"; 
         $ab= mysqli_query($conn,$query);
         return($ab);
         
@@ -15,10 +15,11 @@ class data  extends dbhl
     public function getallusers()
         {
             $conn=$this->connect();
-            $sql="SELECT * from students ,faculty where students.fid=faculty.fid";
+            $sql="SELECT SN,  name ,roll_no , address, faculty.faculty,status,image
+            FROM students
+            LEFT JOIN faculty
+            ON students.fid=faculty.fid";
             $ab= mysqli_query($conn,$sql);
-                
-                
                 return $ab;
 
         }
@@ -35,10 +36,10 @@ class data  extends dbhl
         return $ab; 
     }
 
-    public function edit ($sn,$name,$roll,$address,$faculty,$status)
+    public function edit ($sn,$name,$roll,$address,$faculty,$status,$image)
     {
         $conn=$this->connect();
-        $query = "UPDATE students SET name = '$name',roll_no = '$roll', fid='$faculty',address= '$address',status = '$status' WHERE `SN` = $sn";  
+        $query = "UPDATE students SET name = '$name',roll_no = '$roll', fid='$faculty',address= '$address',status = '$status',image='$image' WHERE `SN` = $sn";  
         $result = mysqli_query($conn, $query);
         if($result){
             header('location: display.php');

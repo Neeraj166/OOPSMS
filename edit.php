@@ -58,6 +58,7 @@ if (isset($_GET['edt']))
                 <input type="text" name="status" value="<?php echo $res['status']; ?>" >
             </td>
         </tr>
+        
         <tr>  <td>
             <input type ="submit" value="Update" name ="update">
             </td>

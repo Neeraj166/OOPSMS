@@ -1,12 +1,11 @@
 <a href="index.php">Home</a><br>
-<form action="action.php" method="POST">
+<form action="action.php" method="POST" enctype="multipart/form-data" >
             <table>           
             <tr>
-                <td>Name:</td>
-                <td>
-                    <input type="text" name="name" required >
-                </td>
-            </tr>
+               <td>Name:</td>
+               <td>
+               <input type="text" name="name" required>
+               </td>
             <tr>
                 <td>Roll No:</td>
                 <td>
@@ -46,10 +45,16 @@
                     <input type="text" name="status"required >
                 </td>
             </tr>
+            <tr>
+                <td>Add Photo:</td>
+                <td>
+                    <input type="file" name="uploadfile" required >
+                </td>
+            </tr>
+            <tr>            
             <tr>  <td>
                 <input type ="submit" value="ADD" name ="add">
                 </td>
             </tr>
             </table>
-            
  </form>

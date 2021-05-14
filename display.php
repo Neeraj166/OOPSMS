@@ -8,7 +8,8 @@
 					<th>Roll No</th>
 					<th>Address</th>
 					<th>Faculty</th>
-                    <th>Status</th>	
+                    <th>Status</th>
+                    <th>Image</th>	
                     <th colspan="2">Operation</th>			
             </thead>
             
@@ -16,8 +17,6 @@
                 include 'data.php';
                 $datas= new data;
                 $data=$datas->getallusers();
-                $data2=$datas->get_fac();
-            
                 while( $result=mysqli_fetch_assoc($data))
                     {
             ?>
@@ -29,6 +28,7 @@
                         <td><?php echo $result['address'] ?></td>
                         <td><?php echo $result['faculty'] ?></td>
                         <td><?php echo $result['status'] ?></td>
+                        <td><img src="<?php echo $result['image']; ?>" height="200px" width= "200px" ></td>
                         <td><a href="edit.php?edt=<?php echo $result['SN']; ?>">Edit</a></td>
                         <td><a href="action.php?del=<?php echo $result['SN']; ?>">Delete</a></td>
                         </tr>
